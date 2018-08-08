@@ -13,9 +13,15 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
+from django import apps
 from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^users/',include('apps.users.urls', namespace="users")),
+    url(r'^orders/',include('apps.orders.urls', namespace="orders")),
+    url(r'^cart/',include('apps.cart.urls', namespace="cart")),
+    url(r'^', include('apps.goods.urls', namespace="goods")),
+
 ]
